@@ -1,0 +1,40 @@
+<!doctype html>
+
+<!-- copied from https://raw.githubusercontent.com/mdn/webassembly-examples/master/understanding-text-format/logger2.html (CC0) -->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>DOOM - bomberfish.ca</title>
+        <link rel="stylesheet" href="styles.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="rgba(0,0,0,1)" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <p id="focushint"></p>
+            <span id="fps_wrap"><span id="fps_stats">0</span> FPS</span>
+            <div class="container">
+                <canvas id="screen" width="640" height="400" tabindex="0"
+                    >Something went wrong.</canvas
+                >
+            </div>
+            <div id="output" class="hidden"></div>
+            <button id="toggleoutput">Logs</button>
+            <br />
+            <!-- <div id="debug">
+                getmilliseconds calls per second:
+                <span id="getmsps_stats">0</span><br />
+                Total getmilliseconds calls: <span id="getms_stats">0</span
+                ><br />
+                DOOM FPS: <span id="fps_stats">0</span> (target: 35FPS)<br />
+                Total Frames drawn: <span id="drawframes_stats">0</span><br />
+                Browser Animation FPS:
+                <span id="animationfps_stats">0</span> (target: ~60FPS)<br />
+            </div> -->
+            <script src="main.js" defer></script>
+        </div>
+    </body>
+</html>

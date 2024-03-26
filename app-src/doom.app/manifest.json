@@ -1,0 +1,12 @@
+{
+  "name": "DOOM",
+  "type": "auto",
+  "package": "bomberfish.DOOM",
+  "index": "index.html",
+  "icon": "doom.png",
+  "wininfo": {
+    "title": "DOOM",
+    "width": "640px",
+    "height": "480px"
+  }
+}

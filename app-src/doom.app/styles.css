@@ -1,0 +1,131 @@
+:root {
+    text-align: center;
+    --bg: rgba(0, 0, 0, 1);
+    --fg: rgba(255, 255, 255, 1);
+    --mg: rgba(255, 255, 255, 0.15);
+    --mg2: rgba(255, 255, 255, 0.05);
+    --err: rgba(255, 63, 63, 1);
+    --log: rgba(100, 100, 255, 1);
+    --body: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI Variable",
+        "Segoe UI", "Roboto Flex", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+        "Helvetica Neue", Helvetica, Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --mono: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Mono",
+        "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono",
+        "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
+        monospace;
+}
+
+body {
+    font-family: var(--body);
+    background: var(--bg);
+    color: var(--fg);
+    overflow: hidden;
+}
+
+#output {
+    opacity: 1;
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: 15px;
+    overflow-y: scroll;
+    text-align: left !important;
+    color: var(--fg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 25vw;
+    margin-left: auto;
+    margin-right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    transition:
+        width 0.5s,
+        opacity 0.5s;
+}
+
+#output.hidden {
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    transition:
+        width 0.5s,
+        opacity 0.5s;
+}
+
+#output span {
+    display: block;
+    padding-block: 5px;
+}
+
+#output span.log {
+    color: var(--log);
+}
+
+#output span.stdout {
+    color: var(--fg);
+}
+
+#output span.stderr {
+    font-weight: bold;
+    color: var(--err);
+}
+
+.container {
+    /* display: flex; */
+}
+
+button {
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--mg);
+    font-size: 17px;
+    color: var(--fg);
+    font-family: var(--mono);
+}
+
+#debug {
+    font-family: var(--mono);
+}
+
+#screen {
+    background: var(--mg2);
+    border-radius: 8px;
+    max-width: 100vw;
+    height: 100vh;
+    aspect-ratio: 4 / 3;
+    outline: none;
+}
+
+#focushint {
+    position: absolute;
+    top: 0;
+    display: none;
+}
+
+#fps_wrap {
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    color: var(--fg);
+    font-family: var(--mono);
+    background: var(--mg);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#toggleoutput {
+    appearance: none;
+    position: absolute;
+    top: 4vh;
+    right: 1vw;
+    color: var(--fg);
+    font-family: var(--mono);
+    background: var(--mg);
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}

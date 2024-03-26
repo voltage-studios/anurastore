@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "DOOM",
+      "icon": "doom.png",
+      "summary": "The classic DOOM game",
+      "desc": "DOOM ported to WebAssembly",
+      "package": "bomberfish.DOOM",
+      "data": "app.zip",
+      "version": "1.0.0",
+      "category": "Games"
+    }
+  ]
+}
