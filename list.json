@@ -6,7 +6,7 @@
       "summary": "The classic DOOM game",
       "desc": "DOOM ported to WebAssembly",
       "package": "bomberfish.DOOM",
-      "data": "app.zip",
+      "data": "data.zip",
       "version": "1.0.0",
       "category": "Games"
     }
