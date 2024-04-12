@@ -1,0 +1,12 @@
+{
+  "name": "3D Pinball - Space Cadet",
+  "type": "auto",
+  "package": "bomberfish.pinball",
+  "index": "index.html",
+  "icon": "icon.png",
+  "wininfo": {
+    "title": "3D Pinball for Windows - Space Cadet",
+    "width": "640px",
+    "height": "480px"
+  }
+}
