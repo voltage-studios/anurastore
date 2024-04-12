@@ -9,6 +9,16 @@
       "data": "data.zip",
       "version": "1.0.0",
       "category": "Games"
+    },
+    {
+      "name": "3D Pinball for Windows - Space Cadet",
+      "icon": "icon.png",
+      "summary": "The classic 3D Pinball game from Windows XP",
+      "desc": "Enjoy the classic 3D Pinball game from Windows XP, ported to AnuraOS!\n\nOriginal port: https://github.com/alula/SpaceCadetPinball",
+      "package": "bomberfish.pinball",
+      "data": "data.zip",
+      "version": "1.0.0",
+      "category": "Games"
     }
   ]
 }
