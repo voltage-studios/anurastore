@@ -6,3 +6,4 @@
 ## Apps
 - DOOM (wasm port)
 - 3D Pinball - Space Cadet (emscripten port)
+- Paint
