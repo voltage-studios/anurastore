@@ -1,3 +1,5 @@
+console.log("index.js");
+
 async function termInit() {
   const t = new hterm.Terminal({
     profileId: "default",
@@ -5,6 +7,7 @@ async function termInit() {
   });
 
   try {
+    console.log("Opening x86 pty");
     const pty = anura.x86.openpty(
       "TERM=xterm DISPLAY=:0 bash",
       80,
@@ -15,11 +18,12 @@ async function termInit() {
       },
     );
   } catch (e) {
-    console.error(e);
+    console.error("Error opening x86 pty: " + e);
     t.io.println("Failed to open pty: " + e);
   }
 
   t.onTerminalReady = function () {
+    console.log("Terminal ready");
     // Create a new terminal IO object and give it the foreground.
     // (The default IO object just prints warning messages about unhandled
     // things to the the JS console.)
@@ -77,6 +81,8 @@ async function termInit() {
 }
 
 (async () => {
+  console.log("lib.init()");
   await lib.init();
+  console.log("termInit()");
   await termInit();
 })();
