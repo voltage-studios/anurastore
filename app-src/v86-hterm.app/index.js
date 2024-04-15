@@ -16,7 +16,7 @@ t.onTerminalReady = function () {
       80,
       24,
       (data) => {
-        console.log(data);
+        // console.log(data);
         io.print(data);
       },
     )
