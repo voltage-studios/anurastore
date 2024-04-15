@@ -1,4 +1,4 @@
-const t = new hterm.Terminal({ profileId: "default", storage: new lib.Storage.Memory() });
+const t = new hterm.Terminal();
 
 t.onTerminalReady = function () {
   // Create a new terminal IO object and give it the foreground.
