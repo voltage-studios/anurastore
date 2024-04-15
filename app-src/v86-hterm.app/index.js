@@ -1,3 +1,5 @@
+await lib.init();
+
 async function termInit() {
   const t = new hterm.Terminal({
     profileId: "default",
