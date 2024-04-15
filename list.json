@@ -21,14 +21,14 @@
       "category": "Games"
     },
     {
-      "name": "x86 Terminal (hterm)",
-      "icon": "icon.png",
-      "summary": "The ChromiumOS terminal ported to Anura",
-      "desc": "The ChromiumOS terminal ported to Anura",
-      "package": "bomberfish.hterm",
-      "data": "Archive.zip",
-      "version": "1.0.0",
-      "category": "Utilities"
-    }
+  "name": "Paint",
+  "icon": "128x128.png",
+  "summary": "MS Paint in Anura",
+  "desc": "A faithful recreation of MS Paint! \nOriginal repository: https://github.com/1j01/jspaint",
+  "package": "bomberfish.paint",
+  "data": "data.zip",
+  "version": "1.0.0",
+  "category": "Utilities"
+}
   ]
 }
