@@ -26,7 +26,7 @@
       "summary": "The ChromiumOS terminal ported to Anura",
       "desc": "The ChromiumOS terminal ported to Anura",
       "package": "bomberfish.hterm",
-      "data": "data.zip",
+      "data": "Archive.zip",
       "version": "1.0.0",
       "category": "Utilities"
     }
