@@ -1,8 +1,23 @@
 async function termInit() {
   const t = new hterm.Terminal({
     profileId: "default",
-    storage: new lib.Storage.Memory(),
+    storage: new lib.Storage.Memory()
   });
+
+  try {
+    const pty = anura.x86.openpty(
+      "TERM=xterm DISPLAY=:0 bash",
+      80,
+      24,
+      (data) => {
+        console.log(data);
+        io.print(data);
+      },
+    );
+  } catch (e) {
+    console.error(e);
+    t.io.println("Failed to open pty: " + e);
+  }
 
   t.onTerminalReady = function () {
     // Create a new terminal IO object and give it the foreground.
@@ -55,21 +70,6 @@ async function termInit() {
     // thing is complete, should call io.pop() to restore control to the
     // previous io object.
   };
-
-  try {
-    const pty = anura.x86.openpty(
-      "TERM=xterm DISPLAY=:0 bash",
-      80,
-      24,
-      (data) => {
-        console.log(data);
-        io.print(data);
-      },
-    );
-  } catch (e) {
-    console.error(e);
-    t.io.println("Failed to open pty: " + e);
-  }
 
   t.decorate(document.querySelector("#terminal"));
 
