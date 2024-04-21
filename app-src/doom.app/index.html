@@ -15,7 +15,7 @@
             }
 
             body {
-                background-color: #111;
+                background-color: transparent;
                 margin: 0;
                 padding: 0;
                 display: flex;
@@ -31,12 +31,13 @@
                 aspect-ratio: 4 / 3;
                 width: auto;
                 height: 100vh;
+                outline: none;
             }
         </style>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>
     <body>
-            <canvas class="frame" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+            <canvas class="frame" id="canvas" oncontextmenu="event.preventDefault()" tabindex="1"></canvas>
 
         <script>
             var commonArgs = ["-iwad", "doom1.wad", "-window", "-nogui", "-nomusic", "-config", "default.cfg", "-servername", "doomflare"];
@@ -56,6 +57,7 @@
                 },
                 canvas: (function () {
                     var canvas = document.getElementById("canvas");
+                    canvas.focus();
                     canvas.addEventListener(
                         "webglcontextlost",
                         function (e) {

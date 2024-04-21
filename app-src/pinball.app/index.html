@@ -45,7 +45,7 @@
             id="canvas"
             oncontextmenu="event.preventDefault()"
             style="display: none"
-            tabindex="-1"
+            tabindex="1"
         ></canvas>
         <script>
             var statusElement = document.getElementById("status"),
@@ -75,6 +75,8 @@
                     },
                     canvas: (function () {
                         var e = document.getElementById("canvas");
+                        e.focus();
+                        
                         return (
                             e.addEventListener(
                                 "webglcontextlost",
