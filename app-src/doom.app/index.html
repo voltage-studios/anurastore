@@ -1,40 +1,91 @@
-<!doctype html>
-
-<!-- copied from https://raw.githubusercontent.com/mdn/webassembly-examples/master/understanding-text-format/logger2.html (CC0) -->
-
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-us">
     <head>
-        <meta charset="utf-8" />
-        <title>DOOM - bomberfish.ca</title>
-        <link rel="stylesheet" href="styles.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="rgba(0,0,0,1)" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    </head>
+        <title>Websockets Doom</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <style>
 
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                font-family: "More Perfect DOS VGA", "Roboto Mono", monospace;
+                font-size: 12px;
+            }
+
+            body {
+                background-color: #111;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
+            canvas.frame {
+                background-color: black;
+                aspect-ratio: 4 / 3;
+                width: auto;
+                height: 100vh;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+    </head>
     <body>
-        <div id="wrapper">
-            <p id="focushint"></p>
-            <span id="fps_wrap"><span id="fps_stats">0</span> FPS</span>
-            <div class="container">
-                <canvas id="screen" width="640" height="400" tabindex="0"
-                    >Something went wrong.</canvas
-                >
-            </div>
-            <div id="output" class="hidden"></div>
-            <button id="toggleoutput">Logs</button>
-            <br />
-            <!-- <div id="debug">
-                getmilliseconds calls per second:
-                <span id="getmsps_stats">0</span><br />
-                Total getmilliseconds calls: <span id="getms_stats">0</span
-                ><br />
-                DOOM FPS: <span id="fps_stats">0</span> (target: 35FPS)<br />
-                Total Frames drawn: <span id="drawframes_stats">0</span><br />
-                Browser Animation FPS:
-                <span id="animationfps_stats">0</span> (target: ~60FPS)<br />
-            </div> -->
-            <script src="main.js" defer></script>
-        </div>
+            <canvas class="frame" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+
+        <script>
+            var commonArgs = ["-iwad", "doom1.wad", "-window", "-nogui", "-nomusic", "-config", "default.cfg", "-servername", "doomflare"];
+
+            var Module = {
+                onRuntimeInitialized: () => {
+                    callMain(commonArgs);
+                },
+                noInitialRun: true,
+                preRun: () => {
+                    Module.FS.createPreloadedFile("", "doom1.wad", "doom1.wad", true, true);
+                    Module.FS.createPreloadedFile("", "default.cfg", "default.cfg", true, true);
+                },
+                printErr: function (text) {
+                    if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(" ");
+                    console.error(text);
+                },
+                canvas: (function () {
+                    var canvas = document.getElementById("canvas");
+                    canvas.addEventListener(
+                        "webglcontextlost",
+                        function (e) {
+                            alert("WebGL context lost. You will need to reload the page.");
+                            e.preventDefault();
+                        },
+                        false
+                    );
+                    return canvas;
+                })(),
+                print: function (text) {
+                    console.log(text);
+                },
+                setStatus: function (text) {
+                    console.log(text);
+                },
+                totalDependencies: 0,
+                monitorRunDependencies: function (left) {
+                    this.totalDependencies = Math.max(this.totalDependencies, left);
+                    Module.setStatus(left ? "Preparing... (" + (this.totalDependencies - left) + "/" + this.totalDependencies + ")" : "All downloads complete.");
+                },
+            };
+
+            window.onerror = function (event) {
+                Module.setStatus("Exception thrown, see JavaScript console");
+                Module.setStatus = function (text) {
+                    if (text) Module.printErr("[post-exception status] " + text);
+                };
+            };
+        </script>
+        <script type="text/javascript" src="websockets-doom.js"></script>
     </body>
 </html>
